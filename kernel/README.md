@@ -1,4 +1,4 @@
-linux.driver
-============
+lophilo.linux.basic
+===================
 
-Linux Driver Source for Lophilo Platform
+Basic Linux driver for Lophilo platform. 

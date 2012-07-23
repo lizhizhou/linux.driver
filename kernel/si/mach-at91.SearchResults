@@ -1,0 +1,10 @@
+---- pck0 Matches (2 in 1 files) ----
+At91sam9g45.c:259
+static struct clk pck0 = {
+	.name		= "pck0",
+	.pmc_mask	= AT91_PMC_PCK0,
+	.type		= CLK_TYPE_PROGRAMMABLE,
+At91sam9g45.c:287
+	clk_register(&pck0);
+	clk_register(&pck1);
+}
