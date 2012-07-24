@@ -1,10 +1,20 @@
----- pck0 Matches (2 in 1 files) ----
-At91sam9g45.c:259
-static struct clk pck0 = {
-	.name		= "pck0",
-	.pmc_mask	= AT91_PMC_PCK0,
-	.type		= CLK_TYPE_PROGRAMMABLE,
-At91sam9g45.c:287
-	clk_register(&pck0);
-	clk_register(&pck1);
+---- at91_init_sram Matches (4 in 4 files) ----
+At91sam9g45.c:332
+	at91_init_sram(0, AT91SAM9G45_SRAM_BASE, AT91SAM9G45_SRAM_SIZE);
+	init_consistent_dma_size(SZ_4M);
 }
+Board-tabby.c:297
+	at91_init_sram(0, 0x10000000, 0x1000000);
+	at91_init_sram(1, 0x20000000, 0x1000000);
+	at91_init_sram(2, 0x30000000, 0x1000000);
+	at91_init_sram(3, 0x40000000, 0x1000000);
+	
+	//clk_enable(&pck0);
+Generic.h:16
+extern void __init at91_init_sram(int bank, unsigned long base,
+				  unsigned int length);
+
+Setup.c:72
+void __init at91_init_sram(int bank, unsigned long base, unsigned int length)
+{
+	struct map_desc *desc = &sram_desc[bank];
